@@ -48,7 +48,6 @@ for (const link of document.querySelectorAll('[data-primary-download]')) {
 for (const card of document.querySelectorAll('[data-download-card]')) {
   const recommended = card.dataset.downloadCard === detectedPlatform;
   card.classList.toggle('is-recommended', recommended);
-  card.querySelector('[data-platform-recommendation]').hidden = !recommended;
 }
 
 const tabs = [...document.querySelectorAll('[data-platform-tab]')];
