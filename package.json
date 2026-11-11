@@ -1,10 +1,13 @@
 {
   "name": "lightx2v-website",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
   "scripts": {
-    "dev": "python3 -m http.server 4173 --bind 127.0.0.1",
-    "check": "node --check app.js && node scripts/check.mjs"
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs && python3 -m http.server 4173 --bind 127.0.0.1 --directory dist",
+    "check": "node --check theme-init.js && node --check app.js && node --check legacy-download.js && node scripts/check.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "sync": "node scripts/sync-releases.mjs"
   }
 }

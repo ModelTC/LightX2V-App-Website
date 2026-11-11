@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "screenshots": {
+    "mac": {
+      "src": "assets/screenshots/mac-blue-rose-en.png",
+      "width": 2560,
+      "height": 1526,
+      "alt": {
+        "en": "The installed LightX2V Mac app in English, showing the existing blue rose creation in a clean demo workspace.",
+        "zh": "最新版 LightX2V Mac 应用的英文界面，在干净的演示工作区展示已有的蓝玫瑰作品。"
+      },
+      "version": "LightX2V 0.1.0 (1) · installed build c537f5a",
+      "detailSrc": "assets/screenshots/mac-blue-rose-en-detail.png",
+      "verified": true,
+      "privacyReviewed": true,
+      "publicUseApproved": true,
+      "detailWidth": 860,
+      "detailHeight": 920,
+      "capture": {
+        "raw": "artifacts/mac-capture/mac-blue-rose-en-raw.jpg",
+        "rawWidth": 2560,
+        "rawHeight": 1606,
+        "heroCrop": {
+          "x": 0,
+          "y": 80,
+          "width": 2560,
+          "height": 1526
+        },
+        "detailCrop": {
+          "x": 490,
+          "y": 380,
+          "width": 860,
+          "height": 920
+        },
+        "sourceFormat": "jpeg"
+      },
+      "galleryId": "blue-rose",
+      "sourceExecutableDigest": "sha256:c537f5af12c3c52eb7bbddd7bc39b42e8f487ac2aa0cd8e73370ff0c55b2f8ca",
+      "applicationBundle": "LightX2V.app",
+      "language": "en"
+    },
+    "windows": {
+      "src": "assets/screenshots/windows-piano-cat-en.png",
+      "width": 2553,
+      "height": 1527,
+      "alt": {
+        "en": "The LightX2V Windows app in English, showing an American Shorthair cat at a piano with 1K generation settings.",
+        "zh": "LightX2V Windows 应用的英文实机界面，展示钢琴前的美国短毛猫作品及 1K 生成参数。"
+      },
+      "version": null,
+      "verified": false,
+      "privacyReviewed": true,
+      "publicUseApproved": true,
+      "language": "en",
+      "galleryId": "piano-cat",
+      "capture": {
+        "source": "user-provided",
+        "sourceFormat": "png",
+        "sha256": "af8b505d3eafa49d85d28febd06fb96084cf08904465712e2a8928b5ea2aec76",
+        "verificationNote": "Original screenshot supplied by the user for the website; app version and official release digest have not been supplied."
+      }
+    }
+  },
+  "gallery": [
+    {
+      "id": "capybara-wizard",
+      "src": "assets/gallery/capybara-wizard.jpg",
+      "thumbnail": "assets/gallery/capybara-wizard-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "title": {
+        "en": "A little everyday magic",
+        "zh": "一点日常魔法"
+      },
+      "description": {
+        "en": "A capybara in a wizard hat, brought to life in rich oil-paint textures.",
+        "zh": "戴上巫师帽的水豚，用细腻的油画笔触，装点一点奇想。"
+      },
+      "category": "illustration",
+      "provenance": {
+        "platform": "mac",
+        "model": "Qwen-Image-2.1-Turbo",
+        "prompt": "A capybara wearing a wizard hat, oil painting",
+        "resolution": 1024,
+        "width": 1024,
+        "height": 1024,
+        "steps": 8,
+        "seed": 2588304707,
+        "promptEnhancement": false,
+        "durationSeconds": 87.26062208297662,
+        "generationId": "20261111-130000-015C69F1",
+        "original": "assets/gallery/capybara-wizard-original.png",
+        "verified": true,
+        "publicUseApproved": true
+      }
+    },
+    {
+      "id": "blue-rose",
+      "src": "assets/gallery/blue-rose.jpg",
+      "thumbnail": "assets/gallery/blue-rose-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "title": {
+        "en": "Blue in bloom",
+        "zh": "蓝色盛放"
+      },
+      "description": {
+        "en": "A vivid blue rose against the soft greens of a quiet garden.",
+        "zh": "花园中的一朵蓝玫瑰，映着柔和的绿意。"
+      },
+      "category": "photography",
+      "provenance": {
+        "platform": "mac",
+        "model": "Qwen-Image-2.1-Turbo",
+        "prompt": "A blue rose growing in the garden",
+        "resolution": 1024,
+        "width": 1024,
+        "height": 1024,
+        "steps": 8,
+        "seed": 3990809715,
+        "promptEnhancement": false,
+        "durationSeconds": 88.78214470797684,
+        "generationId": "20261111-135300-8D88701B",
+        "original": "assets/gallery/blue-rose-original.png",
+        "verified": true,
+        "publicUseApproved": true
+      }
+    },
+    {
+      "id": "piano-cat",
+      "src": "assets/gallery/piano-cat.jpg",
+      "thumbnail": "assets/gallery/piano-cat-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "title": {
+        "en": "Paws on the keys",
+        "zh": "琴键上的猫"
+      },
+      "description": {
+        "en": "An American Shorthair at the piano, framed in soft, warm light.",
+        "zh": "一只美国短毛猫，将前爪轻搭在琴键上。"
+      },
+      "category": "photography",
+      "provenance": {
+        "platform": "windows",
+        "model": "Qwen-Image-2.1-Turbo",
+        "prompt": "An American Shorthair cat is playing the piano.",
+        "resolution": 1024,
+        "width": 1024,
+        "height": 1024,
+        "original": "assets/gallery/piano-cat-original.png",
+        "originalSha256": "08f132e040bb61457e74adb0fc0da9dc934ea62384bbf5c28e2164d790511be2",
+        "sourceScreenshot": "assets/screenshots/windows-piano-cat-en.png",
+        "source": "user-provided",
+        "verificationNote": "The user supplied the generated image and matching Windows app screenshot. Model, prompt and output size are visible in the screenshot; generation metadata and app release identity have not been independently verified.",
+        "verified": false,
+        "publicUseApproved": true
+      }
+    }
+  ],
+  "featureDetails": {
+    "local": {
+      "platform": "mac",
+      "applicationBundle": "LightX2V.app",
+      "version": "LightX2V 0.1.0 (1) · installed build c537f5a",
+      "sourceExecutableDigest": "sha256:c537f5af12c3c52eb7bbddd7bc39b42e8f487ac2aa0cd8e73370ff0c55b2f8ca",
+      "language": "en",
+      "verified": true,
+      "privacyReviewed": true,
+      "publicUseApproved": true,
+      "capture": {
+        "raw": "artifacts/mac-capture/mac-local-en-raw.jpg",
+        "rawWidth": 2560,
+        "rawHeight": 1606,
+        "sourceFormat": "jpeg",
+        "newGenerationPerformed": false,
+        "sha256": "6209c489d85e248ca85338402e716d76537457057d0c63af3c61582ca8da5feb"
+      },
+      "images": [
+        {
+          "src": "assets/screenshots/mac-local-models-en.png",
+          "width": 590,
+          "height": 168,
+          "role": "primary",
+          "alt": {
+            "en": "The real LightX2V model selector, with Standard selected and INT8 available.",
+            "zh": "真实 LightX2V 模型模式选择界面，当前选择 Standard，并显示 INT8 选项。"
+          },
+          "crop": {
+            "x": 1160,
+            "y": 1310,
+            "width": 590,
+            "height": 168
+          }
+        },
+        {
+          "src": "assets/screenshots/mac-local-hardware-en.png",
+          "width": 334,
+          "height": 112,
+          "role": "secondary",
+          "alt": {
+            "en": "LightX2V local inference status showing Apple M5 and MPS.",
+            "zh": "LightX2V 本机推理状态，显示 Apple M5 与 MPS。"
+          },
+          "crop": {
+            "x": 24,
+            "y": 1480,
+            "width": 334,
+            "height": 112
+          }
+        }
+      ]
+    },
+    "workflow": {
+      "platform": "mac",
+      "applicationBundle": "LightX2V.app",
+      "version": "LightX2V 0.1.0 (1) · installed build c537f5a",
+      "sourceExecutableDigest": "sha256:c537f5af12c3c52eb7bbddd7bc39b42e8f487ac2aa0cd8e73370ff0c55b2f8ca",
+      "language": "en",
+      "verified": true,
+      "privacyReviewed": true,
+      "publicUseApproved": true,
+      "capture": {
+        "raw": "artifacts/mac-capture/mac-workflow-en-raw.jpg",
+        "rawWidth": 2560,
+        "rawHeight": 1606,
+        "sourceFormat": "jpeg",
+        "newGenerationPerformed": false,
+        "sha256": "d262bd4f9e4389514e1ef741fa91989cf3448ec1ac83be02d0ead8433fd62e21"
+      },
+      "images": [
+        {
+          "src": "assets/screenshots/mac-workflow-prompt-en.png",
+          "width": 1354,
+          "height": 210,
+          "role": "primary",
+          "alt": {
+            "en": "The real LightX2V prompt input, with the blue rose prompt, model selection and generate control ready.",
+            "zh": "真实 LightX2V 提示词输入框，已填写蓝玫瑰提示词，并显示模型选择与生成按钮。"
+          },
+          "crop": {
+            "x": 520,
+            "y": 1368,
+            "width": 1354,
+            "height": 210
+          }
+        },
+        {
+          "src": "assets/screenshots/mac-workflow-settings-en.png",
+          "width": 600,
+          "height": 666,
+          "role": "secondary",
+          "alt": {
+            "en": "LightX2V generation settings showing 1K, a 1:1 aspect ratio and a 1024 by 1024 output size.",
+            "zh": "LightX2V 生成参数，显示 1K、1:1 比例和 1024 × 1024 输出尺寸。"
+          },
+          "crop": {
+            "x": 1940,
+            "y": 200,
+            "width": 600,
+            "height": 666
+          }
+        }
+      ]
+    }
+  }
+}

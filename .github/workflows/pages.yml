@@ -1,37 +1,81 @@
-name: Deploy website to GitHub Pages
+name: Verify and publish website
 on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+
 permissions:
   contents: read
-  pages: write
-  id-token: write
+
 concurrency:
-  group: pages
+  group: website-${{ github.ref }}
   cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      publish: ${{ steps.publication.outputs.publish }}
+      release_changed: ${{ steps.releases.outputs.changed }}
+      release_snapshot: ${{ steps.releases.outputs.snapshot }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm run check
-      - name: Prepare public files
+      - name: Check release synchronization and publication safeguards
+        run: npm test
+      - name: Synchronize verified official download information
+        id: releases
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
-          mkdir -p _site
-          cp index.html styles.css app.js _site/
-          cp -R assets _site/
-          touch _site/.nojekyll
+          if [ "$EVENT_NAME" = schedule ]; then
+            node scripts/sync-releases.mjs --strict
+          else
+            node scripts/sync-releases.mjs
+          fi
+      - name: Build localized static pages
+        if: github.event_name != 'schedule' || steps.releases.outputs.changed == 'true'
+        run: npm run build
+      - name: Validate static pages
+        if: github.event_name != 'schedule' || steps.releases.outputs.changed == 'true'
+        run: npm run check
+      - name: Check publication gate
+        id: publication
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          RELEASE_CHANGED: ${{ steps.releases.outputs.changed }}
+        run: |
+          publish=false
+          if [ "$GITHUB_REF" = refs/heads/main ]; then
+            if [ "$EVENT_NAME" != schedule ] || [ "$RELEASE_CHANGED" = true ]; then
+              node scripts/check.mjs --publish
+              publish=true
+            fi
+          fi
+          echo "publish=$publish" >> "$GITHUB_OUTPUT"
+          if [ "$publish" != true ]; then
+            echo 'Publication is gated or app downloads are unchanged; production remains unchanged.'
+          fi
       - uses: actions/upload-pages-artifact@v3
+        if: steps.publication.outputs.publish == 'true'
         with:
-          path: _site
-          name: github-pages-${{ github.run_attempt }}
+          path: dist
+          name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
   deploy:
     needs: build
+    if: needs.build.outputs.publish == 'true'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -41,4 +85,26 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          artifact_name: github-pages-${{ github.run_attempt }}
+          artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+      - uses: actions/checkout@v4
+        if: steps.deployment.outcome == 'success' && needs.build.outputs.release_changed == 'true'
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        if: steps.deployment.outcome == 'success' && needs.build.outputs.release_changed == 'true'
+        with:
+          node-version: '22'
+      - name: Record successfully deployed release snapshot
+        if: steps.deployment.outcome == 'success' && needs.build.outputs.release_changed == 'true'
+        env:
+          RELEASE_SNAPSHOT: ${{ needs.build.outputs.release_snapshot }}
+          DEPLOYMENT_OUTCOME: ${{ steps.deployment.outcome }}
+        run: |
+          node scripts/record-publication.mjs
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add site-data/releases.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record successfully deployed app downloads'
+            git push origin HEAD:main
+          fi

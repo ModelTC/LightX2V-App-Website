@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "approved": true,
+  "approvedAt": "2026-11-11",
+  "authorization": "The site owner approved this current website for publication in the ongoing review.",
+  "scope": "Mac and English Windows app screenshots, reviewed feature details, and three gallery images.",
+  "knownLimitations": [
+    "The installed Mac executable is identified, but a matching official release package has not been verified.",
+    "The user supplied the Windows capture and piano-cat output; the Windows app release identity and full generation metadata are not supplied.",
+    "The owner approved the current three-image gallery instead of the original six-category target."
+  ],
+  "mediaSha256": "0eab3b81d2f02fd2d426b38c9e52dfd285eb55a5ceddb2e2791c88a8c9075d4b",
+  "assets": {
+    "assets/gallery/blue-rose-original.png": "3cc688f56308a47e27deae01401742ad5f716153817d61c6f358192291086971",
+    "assets/gallery/blue-rose-thumb.jpg": "b53687e3fa6e5223bcaac15780242a1febcf34886613edabc34a991be85ce883",
+    "assets/gallery/blue-rose.jpg": "f1d0867d8779a988b7fb93023ff911e25450285ff9d27132a18e9556dd895061",
+    "assets/gallery/capybara-wizard-original.png": "6bc545116f94f154cb3165be16e4c1c720e8570109d71243420cfe48ed8750fa",
+    "assets/gallery/capybara-wizard-thumb.jpg": "48e4b61fbd75814cdf5a2eb5114c1c7f192e9951fb08dc8664e4f6e21b641f91",
+    "assets/gallery/capybara-wizard.jpg": "a2676e7ec5879214b30229d4ce8bc24e0fdb0857b9abe46f2d38c81ed1f7e270",
+    "assets/gallery/piano-cat-original.png": "08f132e040bb61457e74adb0fc0da9dc934ea62384bbf5c28e2164d790511be2",
+    "assets/gallery/piano-cat-thumb.jpg": "eb0fd6ab59ffa04972ebfbe4e0c0fb5e9375e5bd73295fbf7485737f73457a6c",
+    "assets/gallery/piano-cat.jpg": "cddc3ef12074fc04b41b54f567cc12367744efad8cbef26d498892a34b48ced7",
+    "assets/screenshots/mac-blue-rose-en-detail.png": "6937f193b363b5c7a2c2b6cf0eecf6361f9172034c84b3b9f34d792913dbdc91",
+    "assets/screenshots/mac-blue-rose-en.png": "5552e6db9f93d59981bf82e2b19d441c3851648b1467f905de10ace0113d8386",
+    "assets/screenshots/mac-local-hardware-en.png": "97ee1e87cce5e63b9a04e138b5df694ac04db2be45313c9bec384d242d07ca45",
+    "assets/screenshots/mac-local-models-en.png": "2e8748d166c2b660be17eb4a5cae08598f68d02021f9e0aab54da131011722d2",
+    "assets/screenshots/mac-workflow-prompt-en.png": "4bcfa968567d0affababb6c8e4ddd042ac6a581a0493b26b0dabd129b44190b6",
+    "assets/screenshots/mac-workflow-settings-en.png": "5458584850942ffc00d6eed7eee81fc9d476df88a102117913511d8ef72922b2",
+    "assets/screenshots/windows-piano-cat-en.png": "af8b505d3eafa49d85d28febd06fb96084cf08904465712e2a8928b5ea2aec76"
+  }
+}
