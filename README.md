@@ -28,7 +28,7 @@ npm run check
 
 ## 更新下载信息
 
-`app.js` 的 `releases` 集中维护 Mac Stable、Mac Latest 和 Windows 的版本与 URL。
+`app.js` 的 `releases` 集中维护 Mac Stable 和 Windows 的版本与 URL。
 同时更新 `index.html` 中对应 `data-download` 元素的 href，以及 Windows 版本文本，供禁用 JavaScript 的浏览器使用。`npm run check` 会检查 URL 一致性。
 不要将 Windows 的预览版链接替换为 `/releases/latest`：GitHub 的 latest 不包含预发布。
 
@@ -44,3 +44,5 @@ Mac 默认 Stable；Windows 当前 v0.3.12 Preview。安装包托管在各自应
 - https://chatgpt.com/zh-Hans-CN/download/
 - https://linear.app/download
 - https://www.raycast.com/
+
+网页黑白图标按 Mac 应用 scripts/make-icon.swift 的几何形状和灰度配色转换为 SVG，与应用图标保持一致。

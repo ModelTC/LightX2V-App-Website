@@ -7,7 +7,7 @@ const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
 assert.equal(new Set(ids).size, ids.length);
 for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) assert(ids.includes(target), `Missing #${target}`);
 for (const [, asset] of html.matchAll(/(?:src|href)="(\.\/[^"#]+)"/g)) await access(new URL(asset, root));
-for (const key of ['mac', 'macLatest', 'windows']) {
+for (const key of ['mac', 'windows']) {
  const fallback = html.match(new RegExp(`data-download="${key}" href="([^"]+)"`))?.[1];
  const configured = js.match(new RegExp(`${key}: \\{[\\s\\S]*?url: '([^']+)'`))?.[1];
  assert(fallback && configured);

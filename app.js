@@ -3,9 +3,6 @@ export const releases = {
   mac: {
     url: 'https://github.com/ModelTC/LightX2V-Mac-App/releases/download/stable/LightX2V-APP-macOS-arm64.zip',
   },
-  macLatest: {
-    url: 'https://github.com/ModelTC/LightX2V-Mac-App/releases/download/latest/LightX2V-APP-macOS-arm64.zip',
-  },
   windows: {
     version: 'v0.3.12',
     url: 'https://github.com/ModelTC/LightX2V-Windows-App/releases/download/v0.3.12/LightX2V-Windows-0.3.12-win-x64.zip',
