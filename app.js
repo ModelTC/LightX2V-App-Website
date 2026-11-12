@@ -50,29 +50,6 @@ for (const card of document.querySelectorAll('[data-download-card]')) {
   card.classList.toggle('is-recommended', recommended);
 }
 
-const tabs = [...document.querySelectorAll('[data-platform-tab]')];
-function selectPlatform(platform, focus = false) {
-  for (const tab of tabs) {
-    const active = tab.dataset.platformTab === platform;
-    tab.setAttribute('aria-selected', String(active));
-    tab.tabIndex = active ? 0 : -1;
-    tab.classList.toggle('is-active', active);
-    if (active && focus) tab.focus();
-  }
-  for (const panel of document.querySelectorAll('[data-platform-panel]')) panel.hidden = panel.dataset.platformPanel !== platform;
-}
-if (tabs.length) selectPlatform(detectedPlatform || 'mac');
-for (const tab of tabs) {
-  tab.addEventListener('click', () => selectPlatform(tab.dataset.platformTab));
-  tab.addEventListener('keydown', event => {
-    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
-    event.preventDefault();
-    const next = event.key === 'Home' ? tabs[0] : event.key === 'End' ? tabs.at(-1)
-      : tabs[(tabs.indexOf(tab) + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length];
-    selectPlatform(next.dataset.platformTab, true);
-  });
-}
-
 // Native details provide a keyboard-friendly baseline even without JavaScript.
 const menus = [...document.querySelectorAll('.docs-menu,.language-menu,.theme-menu,.mobile-menu,.download-picker')];
 for (const menu of menus) menu.addEventListener('toggle', () => {

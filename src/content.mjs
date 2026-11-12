@@ -25,7 +25,6 @@ export const content = {
     },
     preview: {
       label: 'Take a closer look',
-      tabLabel: 'App screenshot platform',
       mac: 'macOS',
       windows: 'Windows',
       actual: 'Actual app interface',
@@ -152,7 +151,6 @@ export const content = {
     },
     preview: {
       label: '近距离看看你的创作空间',
-      tabLabel: 'App 截图平台',
       mac: 'macOS',
       windows: 'Windows',
       actual: '真实 App 界面',

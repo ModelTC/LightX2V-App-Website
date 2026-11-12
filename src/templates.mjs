@@ -114,8 +114,7 @@ function appScreenshot(ctx, platform, detail = false) {
 function productPreview(ctx) {
   const { c } = ctx;
   return `<div class="product-preview" aria-label="${c.preview.label}">
-    <div class="preview-toolbar"><div class="platform-tabs" role="tablist" aria-label="${c.preview.tabLabel}">${['mac', 'windows'].map((platform) => `<button type="button" class="platform-tab${platform === 'mac' ? ' is-active' : ''}" id="tab-${platform}" role="tab" aria-selected="${platform === 'mac'}" aria-controls="preview-${platform}" tabindex="${platform === 'mac' ? '0' : '-1'}" data-platform-tab="${platform}">${icon(platform)}<span>${c.preview[platform]}</span></button>`).join('')}</div></div>
-    ${['mac', 'windows'].map((platform) => `<div class="platform-panel" role="tabpanel" id="preview-${platform}" aria-labelledby="tab-${platform}" data-platform-panel="${platform}"${platform === 'windows' ? ' hidden' : ''}><div class="screenshot-frame">${appScreenshot(ctx, platform)}</div></div>`).join('')}
+    <div class="screenshot-frame">${appScreenshot(ctx, 'mac')}</div>
   </div>`;
 }
 
