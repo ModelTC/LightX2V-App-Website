@@ -106,8 +106,8 @@ export const content = {
           link: 'https://github.com/ModelTC/LightX2V-Windows-App/blob/main/docs/getting-started.md',
         },
         {
-          question: 'What do Stable, Latest, and Preview mean?',
-          answer: 'Stable is the recommended release channel. Latest is a rolling build updated after successful builds; it is not a Stable release. Preview builds are available to try while features and compatibility are still being refined. Mac uses Stable. Windows prefers a downloadable Stable release, then Latest, then Preview.',
+          question: 'Which release channel does each app use?',
+          answer: 'Mac uses Stable, the recommended stable release channel. Windows currently offers only Latest, a rolling build updated after successful builds. Latest is not a Stable release. The download buttons link to the current package for each channel.',
         },
         {
           question: 'Do I need an internet connection?',
@@ -232,8 +232,8 @@ export const content = {
           link: 'https://github.com/ModelTC/LightX2V-Windows-App/blob/main/docs/getting-started.md',
         },
         {
-          question: 'Stable、Latest 和 Preview 有什么区别？',
-          answer: 'Stable 是推荐的稳定发布渠道。Latest 会随成功构建滚动更新，不等同于 Stable。Preview 是功能与兼容性仍在完善的预览版本。Mac 使用 Stable；Windows 优先提供可下载的 Stable，其次为 Latest，最后为 Preview。',
+          question: 'Mac 和 Windows 分别使用什么发布渠道？',
+          answer: 'Mac 使用 Stable 稳定发布渠道。Windows 当前仅提供 Latest，会随成功构建滚动更新，不等同于 Stable 稳定版。下载按钮分别指向这两个渠道的当前安装包。',
         },
         {
           question: '需要一直联网吗？',
