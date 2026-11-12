@@ -160,10 +160,10 @@ function gallery(ctx) {
 function downloadCard(ctx, platform) {
   const { c, releases } = ctx;
   const release = releases[platform];
-  const badge = release.channel === 'preview' ? c.download.badgePreview : c.download.badgeStable;
+  const badge = { stable: c.download.badgeStable, latest: c.download.badgeLatest, preview: c.download.badgePreview }[release.channel];
   const title = c.download[`${platform}Title`];
   const label = c.download[`${platform}Button`];
-  const version = platform === 'mac' && release.version === 'stable' ? '' : release.version;
+  const version = ['stable', 'latest'].includes(release.version) ? '' : release.version;
   return `<article class="download-card" id="${platform}-card" data-download-card="${platform}"><div class="download-card-top">${icon(platform, 'platform-icon')}<span class="release-badge${release.channel === 'preview' ? ' is-preview' : ''}">${escape(badge)}</span></div><h3>${title}</h3><a class="button button-primary platform-download" href="${escape(release.url)}" data-platform-download="${platform}">${icon('down')}<span>${label}</span></a><p class="system-requirement">${c.download[`${platform}Requirement`]}</p>${version ? `<p class="release-detail">${escape(version)}</p>` : ''}</article>`;
 }
 

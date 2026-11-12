@@ -41,6 +41,35 @@ test('Windows prefers a downloadable stable release over a newer preview', () =>
   assert.equal(resolveWindowsRelease([newerPreview, olderStable]).version, 'v0.3.10');
 });
 
+function rollingWindowsRelease() {
+  const latest = release('windows', { tag: 'latest' });
+  latest.assets[0].name = 'LightX2V-APP-Windows-x64.zip';
+  latest.assets[0].browser_download_url = `https://github.com/${repositories.windows}/releases/download/latest/${latest.assets[0].name}`;
+  return latest;
+}
+
+test('Windows recognizes the rolling x64 package and labels it Latest rather than Stable', () => {
+  const selected = resolveWindowsRelease([release('windows', { preview: true }), rollingWindowsRelease()]);
+  assert.equal(selected.channel, 'latest');
+  assert.equal(selected.url, 'https://github.com/ModelTC/LightX2V-Windows-App/releases/download/latest/LightX2V-APP-Windows-x64.zip');
+  assert.equal(validateSnapshot(snapshot(release('mac'), [rollingWindowsRelease()])).windows.channel, 'latest');
+  const stable = release('windows', { tag: 'v0.3.10', published: '2026-11-01T00:00:00Z' });
+  assert.equal(resolveWindowsRelease([rollingWindowsRelease(), stable]).version, 'v0.3.10');
+  const arm = rollingWindowsRelease();
+  arm.assets[0].name = 'LightX2V-APP-Windows-arm64.zip';
+  assert.throws(() => resolveWindowsRelease([arm]), /no published/);
+});
+
+test('a replaced Windows Latest package triggers a deployment without a tag or URL change', () => {
+  const latest = rollingWindowsRelease();
+  const previous = snapshot(release('mac'), [latest]);
+  latest.assets[0].id += 1;
+  latest.assets[0].digest = 'sha256:replacement';
+  const next = snapshot(release('mac'), [latest]);
+  assert.equal(previous.windows.url, next.windows.url);
+  assert(releasesChanged(previous, next));
+});
+
 test('Windows permits previews when no stable build is downloadable, sorts by publication, and skips drafts', () => {
   const draft = { ...release('windows', { tag: 'v9.0', published: '2026-12-01T00:00:00Z' }), draft: true };
   const missingStable = { ...release('windows', { tag: 'v0.3.10' }), assets: [] };

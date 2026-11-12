@@ -5,7 +5,7 @@ export const repositories = Object.freeze({
 });
 
 const macAssetName = 'LightX2V-APP-macOS-arm64.zip';
-const windowsAssetName = /^LightX2V-Windows-.+-win-x64\.zip$/;
+const windowsAssetName = /^(?:LightX2V-APP-Windows-x64|LightX2V-Windows-.+-win-x64)\.zip$/;
 
 function officialURL(value, repository, pathPrefix) {
   const url = new URL(value);
@@ -38,7 +38,7 @@ function releaseRecord(release, asset, platform) {
   return {
     platform,
     repository,
-    channel: release.prerelease ? 'preview' : 'stable',
+    channel: release.prerelease ? 'preview' : release.tag_name === 'latest' ? 'latest' : 'stable',
     version: release.tag_name,
     releaseId: release.id,
     releaseUrl: officialURL(release.html_url, repository, 'releases/'),
@@ -66,7 +66,9 @@ export function resolveWindowsRelease(releases) {
     .map(release => ({ release, asset: downloadableAsset(release, repositories.windows, name => windowsAssetName.test(name)) }))
     .filter(candidate => candidate.asset)
     .sort((a, b) => Date.parse(b.release.published_at) - Date.parse(a.release.published_at));
-  const candidate = candidates.find(({ release }) => !release.prerelease) ?? candidates[0];
+  const candidate = candidates.find(({ release }) => !release.prerelease && release.tag_name !== 'latest')
+    ?? candidates.find(({ release }) => !release.prerelease)
+    ?? candidates[0];
   if (!candidate) throw new Error('Windows has no published x64 app ZIP.');
   return releaseRecord(candidate.release, candidate.asset, 'windows');
 }
@@ -83,7 +85,7 @@ export function validateSnapshot(snapshot) {
   for (const platform of ['mac', 'windows']) {
     const record = snapshot[platform];
     if (!record || record.platform !== platform || record.repository !== repositories[platform] ||
-        !['stable', 'preview'].includes(record.channel) || !record.version ||
+        !['stable', 'latest', 'preview'].includes(record.channel) || !record.version ||
         !Number.isSafeInteger(record.asset?.id) || !Number.isFinite(Date.parse(record.asset.updatedAt)) ||
         !Number.isSafeInteger(record.size) || record.size <= 0) {
       throw new Error(`Invalid cached ${platform} release.`);

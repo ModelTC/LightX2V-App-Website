@@ -68,6 +68,7 @@ export const content = {
       title: 'Download LightX2V',
       legacyReturn: 'Go to LightX2V downloads',
       badgeStable: 'Stable',
+      badgeLatest: 'Latest build',
       badgePreview: 'Preview',
       macTitle: 'LightX2V for Mac',
       windowsTitle: 'LightX2V for Windows',
@@ -106,8 +107,8 @@ export const content = {
           link: 'https://github.com/ModelTC/LightX2V-Windows-App/blob/main/docs/getting-started.md',
         },
         {
-          question: 'What does Preview mean?',
-          answer: 'A Preview build is available to try while features and hardware compatibility are still being refined. The Mac download uses the recommended Stable channel. When a Windows stable release is available, it is preferred over Preview builds.',
+          question: 'What do Stable, Latest, and Preview mean?',
+          answer: 'Stable is the recommended release channel. Latest is a rolling build updated after successful builds; it is not a Stable release. Preview builds are available to try while features and compatibility are still being refined. Mac uses Stable. Windows prefers a downloadable Stable release, then Latest, then Preview.',
         },
         {
           question: 'Do I need an internet connection?',
@@ -194,6 +195,7 @@ export const content = {
       title: '下载 LightX2V',
       legacyReturn: '前往 LightX2V 下载区',
       badgeStable: 'Stable 稳定版',
+      badgeLatest: 'Latest 最新构建',
       badgePreview: 'Preview 预览版',
       macTitle: 'LightX2V for Mac',
       windowsTitle: 'LightX2V for Windows',
@@ -232,8 +234,8 @@ export const content = {
           link: 'https://github.com/ModelTC/LightX2V-Windows-App/blob/main/docs/getting-started.md',
         },
         {
-          question: 'Preview 是什么意思？',
-          answer: 'Preview 是可供尝试的预览版本，功能与硬件兼容性仍在完善。Mac 下载使用推荐的 Stable 渠道；当 Windows 有有效稳定版时，会优先提供稳定版。',
+          question: 'Stable、Latest 和 Preview 有什么区别？',
+          answer: 'Stable 是推荐的稳定发布渠道。Latest 会随成功构建滚动更新，不等同于 Stable。Preview 是功能与兼容性仍在完善的预览版本。Mac 使用 Stable；Windows 优先提供可下载的 Stable，其次为 Latest，最后为 Preview。',
         },
         {
           question: '需要一直联网吗？',
