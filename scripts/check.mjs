@@ -79,7 +79,7 @@ for (const page of pages) {
     const canonical = new URL(page.startsWith('zh/') ? 'zh/' : '', canonicalRoot).href;
     assert(html.includes(`rel="canonical" href="${canonical}"`), `${page}: canonical must point to the homepage`);
   }
-  assert(/rel="icon"[^>]*favicon-monochrome/.test(html), `${page}: missing dedicated monochrome favicon`);
+  assert(/rel="icon"[^>]*assets\/favicon-lightx2v\.svg"/.test(html), `${page}: missing LightX2V favicon`);
 }
 
 if (process.argv.includes('--publish')) {

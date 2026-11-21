@@ -15,7 +15,7 @@ function applyTheme(preference, persist = false) {
   if (selected) {
     for (const icon of document.querySelectorAll('[data-current-theme-icon]')) icon.replaceChildren(selected.querySelector('svg').cloneNode(true));
   }
-  document.querySelector('meta[name="theme-color"]').content = root.dataset.theme === 'dark' ? '#111214' : '#fafaf8';
+  document.querySelector('meta[name="theme-color"]').content = root.dataset.theme === 'dark' ? '#0c1418' : '#f6f8f9';
   if (persist) { try { localStorage.setItem(preferenceKey, preference); } catch {} }
 }
 applyTheme(root.dataset.themePreference || 'light');

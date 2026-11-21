@@ -48,7 +48,7 @@ function context(locale, releases, media, canonicalRoot) {
 }
 
 function brand(ctx, footer = false) {
-  return `<a class="brand${footer ? ' footer-brand-link' : ''}" href="#" aria-label="${ctx.c.homeLabel}"><img src="${ctx.asset('assets/mark.svg')}" width="34" height="34" alt=""><span>LightX2V</span></a>`;
+  return `<a class="brand${footer ? ' footer-brand-link' : ''}" href="#" aria-label="${ctx.c.homeLabel}"><span class="brand-mark" aria-hidden="true"></span><span>LightX2V</span></a>`;
 }
 
 function themeControls(ctx, location) {
@@ -190,7 +190,7 @@ export function renderPage({ locale, releases, media, canonicalRoot }) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fafaf8">
+  <meta name="theme-color" content="#f6f8f9">
   <meta name="description" content="${escape(c.description)}">
   <meta property="og:title" content="${escape(title)}">
   <meta property="og:description" content="${escape(c.description)}">
@@ -201,9 +201,9 @@ export function renderPage({ locale, releases, media, canonicalRoot }) {
   <link rel="alternate" hreflang="en" href="${ctx.canonical('en')}">
   <link rel="alternate" hreflang="zh-CN" href="${ctx.canonical('zh')}">
   <link rel="alternate" hreflang="x-default" href="${ctx.canonical('en')}">
-  <link rel="icon" type="image/svg+xml" sizes="any" href="${ctx.asset('assets/favicon-monochrome-v2.svg')}">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="${ctx.asset('assets/favicon-lightx2v.svg')}">
   <script src="${ctx.asset('theme-init.js')}"></script>
-  <link rel="stylesheet" href="${ctx.asset('styles.css')}">
+  <link rel="stylesheet" href="${ctx.asset('styles.css')}?v=cyan">
   <script type="module" src="${ctx.asset('app.js')}"></script>
 </head>
 <body data-page="home" data-locale="${locale}">
@@ -228,14 +228,14 @@ export function renderLegacyDownloadPage({ locale, canonicalRoot }) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fafaf8">
+  <meta name="theme-color" content="#f6f8f9">
   <meta name="robots" content="noindex, follow">
   <title>${escape(c.download.title)}</title>
   <link rel="canonical" href="${canonical(locale)}">
   <link rel="alternate" hreflang="en" href="${canonical('en')}">
   <link rel="alternate" hreflang="zh-CN" href="${canonical('zh')}">
   <link rel="alternate" hreflang="x-default" href="${canonical('en')}">
-  <link rel="icon" type="image/svg+xml" sizes="any" href="${prefix}assets/favicon-monochrome-v2.svg">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="${prefix}assets/favicon-lightx2v.svg">
   <script src="${prefix}theme-init.js"></script>
   <link rel="stylesheet" href="${prefix}styles.css">
   <script type="module" src="${prefix}legacy-download.js"></script>
