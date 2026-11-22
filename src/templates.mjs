@@ -98,6 +98,17 @@ function pendingMedia(ctx, platform, detail = false) {
   return `<div class="media-pending${detail ? ' media-pending-detail' : ''}">${icon(platform === 'mac' ? 'mac' : 'windows')}<p class="media-pending-title">${ctx.c.preview.pendingTitle(ctx.c.preview[platform])}</p><p class="media-pending-description">${ctx.c.preview.pendingDescription}</p></div>`;
 }
 
+// Positions are measured on these specific captures, in source image pixels.
+const screenshotBrandMarks = {
+  'assets/screenshots/mac-blue-rose-en.png': [
+    { x: 40, y: 20, size: 64, background: '#f8f8f8' },
+    { x: 518, y: 320, size: 56, background: '#fff' },
+  ],
+  'assets/screenshots/mac-blue-rose-en-detail.png': [
+    { x: 28, y: 20, size: 56, background: '#fff' },
+  ],
+};
+
 function appScreenshot(ctx, platform, detail = false) {
   const screenshot = ctx.media.screenshots?.[platform];
   if (!screenshot?.src) return pendingMedia(ctx, platform, detail);
@@ -108,7 +119,14 @@ function appScreenshot(ctx, platform, detail = false) {
   const crop = detail ? screenshot.detailCrop : null;
   const focusStyle = crop ? ` style="width:${width / crop.width * 100}%;left:${-crop.x / crop.width * 100}%;top:${-crop.y / crop.height * 100}%"` : '';
   const image = `<img class="${detail ? 'feature-image' : 'app-screenshot'}" src="${ctx.asset(src)}" width="${width}" height="${height}" alt="${escape(alt)}" ${detail ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async"${focusStyle}>`;
-  return crop ? `<div class="feature-image-focus" style="aspect-ratio:${crop.width}/${crop.height}">${image}</div>` : image;
+  if (crop) return `<div class="feature-image-focus" style="aspect-ratio:${crop.width}/${crop.height}">${image}</div>`;
+  const marks = screenshotBrandMarks[src];
+  if (!marks) return image;
+  const overlays = marks.map(({ x, y, size, background }) => {
+    const position = `left:${x / width * 100}%;top:${y / height * 100}%;width:${size / width * 100}%;background-color:${background}`;
+    return `<span class="brand-mark screenshot-brand-mark" style="${position}" aria-hidden="true"></span>`;
+  }).join('');
+  return `<div class="screenshot-artwork${detail ? ' feature-image' : ''}">${image}${overlays}</div>`;
 }
 
 function productPreview(ctx) {
@@ -203,7 +221,7 @@ export function renderPage({ locale, releases, media, canonicalRoot }) {
   <link rel="alternate" hreflang="x-default" href="${ctx.canonical('en')}">
   <link rel="icon" type="image/svg+xml" sizes="any" href="${ctx.asset('assets/favicon-lightx2v.svg')}">
   <script src="${ctx.asset('theme-init.js')}"></script>
-  <link rel="stylesheet" href="${ctx.asset('styles.css')}?v=cyan">
+  <link rel="stylesheet" href="${ctx.asset('styles.css')}?v=cyan-2">
   <script type="module" src="${ctx.asset('app.js')}"></script>
 </head>
 <body data-page="home" data-locale="${locale}">

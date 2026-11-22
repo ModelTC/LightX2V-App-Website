@@ -66,6 +66,19 @@ html[data-theme=dark] {
 .brand-mark::after {
   clip-path: polygon(39.7% 54.9%, 56.5% 54.9%, 78.8% 77.7%, 61.9% 77.8%, 47.1% 62.7%, 4.9% 88.4%);
 }
+
+.screenshot-artwork { position: relative; }
+
+.screenshot-artwork > .feature-image {
+  border: 0;
+  border-radius: inherit;
+  box-shadow: none;
+}
+
+.screenshot-brand-mark {
+  position: absolute;
+  pointer-events: none;
+}
 .nav-main{display:flex;gap:29px;align-items:center;margin-left:auto;font-size:14px;letter-spacing:-.2px}.nav-main>a,.docs-menu>summary{color:var(--muted)}.nav-main>a:hover,.docs-menu>summary:hover{color:var(--text)}.header-actions{display:flex;gap:17px;align-items:center}.github-link{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:8px 12px;border-radius:999px;background:var(--surface-soft);font-size:14px;font-weight:550;white-space:nowrap;transition:background .18s}.github-link:hover{background:color-mix(in srgb,var(--surface-soft) 92%,var(--text))}.github-link>.icon{width:18px;height:18px}.github-text{display:none}.github-stars{display:inline-flex;align-items:center;gap:4px}.github-stars .icon{width:14px;height:14px}.icon-button{display:inline-flex;justify-content:center;align-items:center;width:35px;height:35px;border-radius:50%;transition:background .18s}.icon-button:hover{background:var(--hover)}.docs-menu,.language-menu,.theme-menu,.mobile-menu,.download-picker{position:relative}.docs-menu summary,.language-menu summary{display:flex;align-items:center;gap:5px}.docs-menu summary .icon,.language-menu summary .icon{width:12px;height:12px}.docs-menu-list,.language-menu-list,.mobile-menu-panel,.theme-menu>.theme-options,.download-menu-list{position:absolute;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:16px;padding:9px;z-index:40}.docs-menu-list{min-width:240px;top:34px;left:-16px}.docs-menu-list a,.language-menu-list a,.mobile-menu-panel>a,.mobile-doc-links a{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:12px;border-radius:8px;white-space:nowrap;color:var(--text);font-size:14px}.docs-menu-list a:hover,.language-menu-list a:hover,.mobile-menu-panel a:hover{background:var(--hover)}.docs-menu-list a .icon,.language-menu-list a .icon,.mobile-doc-links a .icon{width:14px;height:14px;color:var(--muted)}.theme-menu>.theme-options{top:43px;right:0;display:flex;flex-direction:column;min-width:145px;align-items:stretch}.language-menu summary{min-height:35px;font-size:14px;font-weight:550;white-space:nowrap;color:var(--muted)}.language-menu summary:hover,.language-menu[open] summary{color:var(--text)}.language-menu-list{min-width:160px;top:43px;right:0}.language-menu-list a[aria-current=page]{background:var(--surface-soft);font-weight:550}.language-menu-list a[aria-current=page] .icon{color:var(--text)}.theme-button{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;font-size:14px;text-align:left;color:var(--muted)}.theme-button[aria-pressed=true]{background:var(--surface-soft);color:var(--text)}.theme-button:hover{color:var(--text)}.theme-button .icon{width:16px;height:16px}.mobile-menu{display:none}.hero{margin:16px 16px 0;border-radius:36px 36px 22px 22px;overflow:clip;isolation:isolate;position:relative;padding:73px 0 0;
   background:
     radial-gradient(ellipse 57% 56% at 82% 66%, var(--hero-light), transparent 100%),
