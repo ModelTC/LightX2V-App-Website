@@ -60,6 +60,27 @@ test('Windows recognizes the rolling x64 package and labels it Latest rather tha
   assert.throws(() => resolveWindowsRelease([arm]), /no published/);
 });
 
+test('Windows selects the installer from the chosen channel and keeps the portable ZIP as a fallback', () => {
+  const latest = rollingWindowsRelease();
+  const installer = {
+    ...latest.assets[0],
+    id: 24,
+    name: 'LightX2V-Setup.exe',
+    browser_download_url: 'https://github.com/ModelTC/LightX2V-Windows-App/releases/download/latest/LightX2V-Setup.exe',
+  };
+  latest.assets.push(installer);
+  const selected = validateSnapshot(snapshot(release('mac'), [latest])).windows;
+  assert.equal(selected.url, installer.browser_download_url);
+  assert.equal(selected.asset.id, installer.id);
+
+  const stable = release('windows', { tag: 'stable', published: '2026-11-01T00:00:00Z' });
+  stable.assets = [{ ...installer, browser_download_url: installer.browser_download_url.replace('/latest/', '/stable/') }];
+  assert.equal(resolveWindowsRelease([latest, stable]).url, stable.assets[0].browser_download_url);
+
+  installer.state = 'new';
+  assert.equal(resolveWindowsRelease([latest]).url, latest.assets[0].browser_download_url);
+});
+
 test('a replaced Windows Latest package triggers a deployment without a tag or URL change', () => {
   const latest = rollingWindowsRelease();
   const previous = snapshot(release('mac'), [latest]);

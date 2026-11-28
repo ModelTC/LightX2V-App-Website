@@ -185,8 +185,11 @@ function downloadCard(ctx, platform) {
 }
 
 function downloads(ctx) {
-  const { c } = ctx;
-  return `<section class="download-section section-wrap" id="download" aria-labelledby="download-title"><div class="download-heading section-heading"><h2 id="download-title">${c.download.title}</h2></div><div class="download-grid">${downloadCard(ctx, 'mac')}${downloadCard(ctx, 'windows')}</div><div class="setup-intro">${icon('system')}<div><h3>${c.download.preparationTitle}</h3><p>${c.download.preparationDescription}</p></div></div><div class="setup-grid"><article class="setup-card"><h4>${c.download.macSetup}</h4><p>${c.download.macSetupDescription}</p></article><article class="setup-card"><h4>${c.download.windowsSetup}</h4><p>${c.download.windowsSetupDescription}</p></article></div></section><section class="faq section-wrap" id="faq"><div class="faq-intro"><h2>${c.download.faqTitle}</h2></div><div class="faq-list">${c.download.faqs.map((faq) => `<details class="faq-item"><summary><span>${faq.question}</span>${icon('plus')}</summary><div class="faq-answer"><p>${faq.answer}</p>${faq.link ? `<a href="${faq.link}" ${externalAttributes}>${faq.linkLabel}${icon('arrow')}</a>` : ''}</div></details>`).join('')}</div></section>`;
+  const { c, releases } = ctx;
+  const windowsSetupDescription = releases.windows.fileName.endsWith('.exe')
+    ? c.download.windowsInstallerDescription
+    : c.download.windowsPortableDescription;
+  return `<section class="download-section section-wrap" id="download" aria-labelledby="download-title"><div class="download-heading section-heading"><h2 id="download-title">${c.download.title}</h2></div><div class="download-grid">${downloadCard(ctx, 'mac')}${downloadCard(ctx, 'windows')}</div><div class="setup-intro">${icon('system')}<div><h3>${c.download.preparationTitle}</h3><p>${c.download.preparationDescription}</p></div></div><div class="setup-grid"><article class="setup-card"><h4>${c.download.macSetup}</h4><p>${c.download.macSetupDescription}</p></article><article class="setup-card"><h4>${c.download.windowsSetup}</h4><p>${windowsSetupDescription}</p></article></div></section><section class="faq section-wrap" id="faq"><div class="faq-intro"><h2>${c.download.faqTitle}</h2></div><div class="faq-list">${c.download.faqs.map((faq) => `<details class="faq-item"><summary><span>${faq.question}</span>${icon('plus')}</summary><div class="faq-answer"><p>${faq.answer}</p>${faq.link ? `<a href="${faq.link}" ${externalAttributes}>${faq.linkLabel}${icon('arrow')}</a>` : ''}</div></details>`).join('')}</div></section>`;
 }
 
 function footer(ctx) {

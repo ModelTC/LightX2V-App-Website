@@ -80,7 +80,8 @@ export const content = {
       macSetup: 'On Mac',
       macSetupDescription: 'Download and extract the ZIP, then open LightX2V. If macOS asks you to verify the developer, see the steps below.',
       windowsSetup: 'On Windows',
-      windowsSetupDescription: 'Extract the entire ZIP, open LightX2V.Windows.exe, and follow the setup wizard. Current builds are unsigned.',
+      windowsInstallerDescription: 'Run LightX2V-Setup.exe, then open LightX2V and choose a workspace.',
+      windowsPortableDescription: 'Extract the entire ZIP, then open LightX2V.Windows.exe and choose a workspace.',
       faqTitle: 'Before you begin.',
       faqs: [
         {
@@ -101,13 +102,13 @@ export const content = {
         },
         {
           question: 'How do I install the Windows app?',
-          answer: 'Extract the complete ZIP before opening LightX2V.Windows.exe. Follow the wizard to prepare the environment and download the models. Current Windows builds are unsigned; follow the official guide for the setup steps.',
+          answer: 'Run LightX2V-Setup.exe to install the app. If you downloaded the portable ZIP, extract it completely before opening LightX2V.Windows.exe. Open the app and follow its setup wizard.',
           linkLabel: 'Windows installation guide',
           link: 'https://github.com/ModelTC/LightX2V-Windows-App/blob/main/docs/getting-started.md',
         },
         {
           question: 'Which release channel does each app use?',
-          answer: 'Mac uses Stable, the recommended stable release channel. Windows currently offers only Latest, a rolling build updated after successful builds. Latest is not a Stable release. The download buttons link to the current package for each channel.',
+          answer: 'Mac uses Stable. Windows uses Latest until a downloadable Stable release is available. GitHub serves the current package for each channel.',
         },
         {
           question: 'Do I need an internet connection?',
@@ -206,7 +207,8 @@ export const content = {
       macSetup: '在 Mac 上',
       macSetupDescription: '下载并解压 ZIP，然后打开 LightX2V。若 macOS 提示无法验证开发者，可查看下方说明。',
       windowsSetup: '在 Windows 上',
-      windowsSetupDescription: '完整解压 ZIP，运行 LightX2V.Windows.exe，按向导完成环境与模型准备。目前构建尚未签名。',
+      windowsInstallerDescription: '运行 LightX2V-Setup.exe 完成安装，然后打开 LightX2V 并选择工作目录。',
+      windowsPortableDescription: '完整解压 ZIP，运行 LightX2V.Windows.exe，然后选择工作目录。',
       faqTitle: '开始之前。',
       faqs: [
         {
@@ -227,13 +229,13 @@ export const content = {
         },
         {
           question: 'Windows 下载后如何安装？',
-          answer: '完整解压 ZIP 后运行 LightX2V.Windows.exe，按向导准备运行环境和下载模型。目前 Windows 构建尚未签名，具体步骤请参阅官方安装指南。',
+          answer: '运行 LightX2V-Setup.exe 完成安装。如果下载的是便携 ZIP，请先完整解压，再运行 LightX2V.Windows.exe。打开应用后，按向导完成首次设置。',
           linkLabel: 'Windows 安装指南',
           link: 'https://github.com/ModelTC/LightX2V-Windows-App/blob/main/docs/getting-started.md',
         },
         {
           question: 'Mac 和 Windows 分别使用什么发布渠道？',
-          answer: 'Mac 使用 Stable 稳定发布渠道。Windows 当前仅提供 Latest，会随成功构建滚动更新，不等同于 Stable 稳定版。下载按钮分别指向这两个渠道的当前安装包。',
+          answer: 'Mac 使用 Stable 稳定版。Windows 优先提供可下载的 Stable，发布前使用滚动更新的 Latest。下载按钮指向 GitHub 对应渠道的当前安装包。',
         },
         {
           question: '需要一直联网吗？',

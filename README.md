@@ -26,6 +26,6 @@ npm run build && npm run check && npm test
 
 ## Deployment
 
-Changes to `main` deploy through GitHub Pages. Official app downloads are checked every 15 minutes and updated when they change.
+Changes to `main` deploy through GitHub Pages. Mac downloads follow Stable. Windows downloads follow Latest until Stable has an app package. Both link directly to GitHub Releases, so replacing a package at the same address updates the download immediately. The scheduled workflow also checks for changes to the selected channel, asset, or link. GitHub may delay scheduled runs.
 
 When replacing images, update the media manifest and approved snapshot in `site-data/`.

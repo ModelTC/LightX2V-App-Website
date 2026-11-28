@@ -5,7 +5,8 @@ export const repositories = Object.freeze({
 });
 
 const macAssetName = 'LightX2V-APP-macOS-arm64.zip';
-const windowsAssetName = /^(?:LightX2V-APP-Windows-x64|LightX2V-Windows-.+-win-x64)\.zip$/;
+const windowsInstallerName = 'LightX2V-Setup.exe';
+const windowsZipName = /^(?:LightX2V-APP-Windows-x64|LightX2V-Windows-.+-win-x64)\.zip$/;
 
 function officialURL(value, repository, pathPrefix) {
   const url = new URL(value);
@@ -61,12 +62,18 @@ export function resolveMacRelease(release) {
 
 export function resolveWindowsRelease(releases) {
   if (!Array.isArray(releases)) throw new Error('Windows Releases must be an array.');
+  const repository = repositories.windows;
   const candidates = releases
     .filter(release => !release.draft && Number.isFinite(Date.parse(release.published_at)))
-    .map(release => ({ release, asset: downloadableAsset(release, repositories.windows, name => windowsAssetName.test(name)) }))
+    .map(release => ({
+      release,
+      asset: downloadableAsset(release, repository, name => name === windowsInstallerName)
+        ?? downloadableAsset(release, repository, name => windowsZipName.test(name)),
+    }))
     .filter(candidate => candidate.asset)
     .sort((a, b) => Date.parse(b.release.published_at) - Date.parse(a.release.published_at));
-  const candidate = candidates.find(({ release }) => !release.prerelease && release.tag_name !== 'latest')
+  const candidate = candidates.find(({ release }) => !release.prerelease && release.tag_name === 'stable')
+    ?? candidates.find(({ release }) => !release.prerelease && release.tag_name !== 'latest')
     ?? candidates.find(({ release }) => !release.prerelease)
     ?? candidates[0];
   if (!candidate) throw new Error('Windows has no published x64 app ZIP.');
@@ -95,8 +102,8 @@ export function validateSnapshot(snapshot) {
     if (platform === 'mac' && (record.channel !== 'stable' || record.version !== 'stable' || record.fileName !== macAssetName)) {
       throw new Error('Cached Mac app must use the Stable channel.');
     }
-    if (platform === 'windows' && !windowsAssetName.test(record.fileName)) {
-      throw new Error('Cached Windows app must be a Windows x64 ZIP.');
+    if (platform === 'windows' && record.fileName !== windowsInstallerName && !windowsZipName.test(record.fileName)) {
+      throw new Error('Cached Windows app must be the official installer or a Windows x64 ZIP.');
     }
   }
   if (snapshot.stars) resolveStars({ full_name: snapshot.stars.repository, stargazers_count: snapshot.stars.count }, snapshot.stars.updatedAt);
