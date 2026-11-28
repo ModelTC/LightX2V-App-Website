@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "syncedAt": "2026-11-25T03:42:45.704Z",
+  "syncedAt": "2026-11-28T09:17:51.948Z",
   "mac": {
     "platform": "mac",
     "repository": "ModelTC/LightX2V-Mac-App",
@@ -26,18 +26,18 @@
     "releaseId": 442475821,
     "releaseUrl": "https://github.com/ModelTC/LightX2V-Windows-App/releases/tag/latest",
     "publishedAt": "2026-11-12T03:52:24Z",
-    "url": "https://github.com/ModelTC/LightX2V-Windows-App/releases/download/latest/LightX2V-APP-Windows-x64.zip",
-    "fileName": "LightX2V-APP-Windows-x64.zip",
-    "size": 92750608,
+    "url": "https://github.com/ModelTC/LightX2V-Windows-App/releases/download/latest/LightX2V-Setup.exe",
+    "fileName": "LightX2V-Setup.exe",
+    "size": 92933120,
     "asset": {
-      "id": 789894146,
-      "updatedAt": "2026-11-25T03:29:43Z",
-      "digest": "sha256:58b06a7ebf1a5aedb0be210ebafb077636b37dd63161d85bdc3107ecd444f091"
+      "id": 803592756,
+      "updatedAt": "2026-11-28T06:58:30Z",
+      "digest": "sha256:8f36797cd5c88024bad16b0ea9814c66b11d7eee829e9295697a804d3c369e24"
     }
   },
   "stars": {
     "repository": "ModelTC/LightX2V",
-    "count": 3021,
-    "updatedAt": "2026-11-25T03:42:45.704Z"
+    "count": 3035,
+    "updatedAt": "2026-11-28T09:17:51.948Z"
   }
 }
